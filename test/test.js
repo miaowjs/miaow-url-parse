@@ -133,10 +133,10 @@ describe('不设置域名', function () {
   });
 
   it('样式中获取图片的链接', function () {
-    assert.equal(log.modules['foo.css'].hash, '6b6871eb8d9d792027d08122fa5f1547');
+    assert.equal(log.modules['foo.css'].hash, '957b1e34d37b8c2d2372d2efd5eabbb1');
   });
 
   it('脚本中获取样式的链接', function () {
-    assert.equal(log.modules['foo.js'].hash, 'a7500f177ba7543a997c4d4e348ebdc0');
+    assert.equal(log.modules['foo.js'].hash, 'db5c51995ae056df0e76b377e0d7e268');
   });
 });

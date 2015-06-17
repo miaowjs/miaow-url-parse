@@ -14,7 +14,7 @@
     "miaow-util": "~0.0.4"
   },
   "devDependencies": {
-    "miaow": "~0.0.4",
+    "miaow": "~0.0.5",
     "mocha": "^2.2.4"
   },
   "scripts": {

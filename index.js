@@ -21,7 +21,7 @@ function parse(option, cb) {
         }));
       }
 
-      urlMap[result[1]] = module.url || path.relative(path.dirname(this.destAbsPath), module.destAbsPath);
+      urlMap[result[1]] = module.url || path.relative(path.dirname(this.destAbsPath), module.destAbsPathWithHash);
       cb();
     }.bind(this));
   }.bind(this), function (err) {
