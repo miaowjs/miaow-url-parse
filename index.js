@@ -2,6 +2,8 @@ var async = require('async');
 var mutil = require('miaow-util');
 var path = require('path');
 
+var pkg = require('./package.json');
+
 /**
  * 解析主入口
  */
@@ -15,10 +17,7 @@ function parse(option, cb) {
     var result = reg.exec(relative);
     this.getModule(result[2], function (err, module) {
       if (err) {
-        return cb(new mutil.PluginError('miaow-url-parse', err, {
-          fileName: this.file.path,
-          showStack: true
-        }));
+        return cb(err);
       }
 
       urlMap[result[1]] = module.url || path.relative(path.dirname(this.destAbsPath), module.destAbsPathWithHash);
@@ -26,7 +25,10 @@ function parse(option, cb) {
     }.bind(this));
   }.bind(this), function (err) {
     if (err) {
-      return cb(err);
+      return cb(new mutil.PluginError(pkg.name, err, {
+        fileName: this.file.path,
+        showStack: true
+      }));
     }
 
     contents = contents.replace(reg, function (str, key) {
