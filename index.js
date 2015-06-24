@@ -10,7 +10,7 @@ var pkg = require('./package.json');
 function parse(option, cb) {
   var keyword = option.keyword || 'url';
   var reg = new RegExp('[\'"\\(](([\\w\\_\\/\\.\\-]*)\\?' + keyword + ')[\'\"\\)]', 'gi');
-  var contents = this.file.contents.toString();
+  var contents = this.contents.toString();
   var urlMap = {};
 
   async.eachSeries(contents.match(reg) || [], function (relative, cb) {
@@ -35,7 +35,7 @@ function parse(option, cb) {
       return str.replace(key, urlMap[key]);
     });
 
-    this.file.contents = new Buffer(contents);
+    this.contents = new Buffer(contents);
 
     cb();
   }.bind(this));
