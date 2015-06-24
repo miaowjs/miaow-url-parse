@@ -1,7 +1,7 @@
 {
   "name": "miaow-url-parse",
   "description": "Miaow的URL补全工具",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "repository": "miaowjs/miaow-url-parse",
   "author": {
     "name": "anhulife",
@@ -14,7 +14,7 @@
     "miaow-util": "~0.0.4"
   },
   "devDependencies": {
-    "miaow": "~0.0.5",
+    "miaow": "~1.0.0",
     "mocha": "^2.2.4"
   },
   "scripts": {

@@ -14,11 +14,9 @@ describe('正常模式', function () {
       cwd: path.resolve(__dirname, './fixtures/normal'),
       output: path.resolve(__dirname, './output'),
       domain: '//www.example.com',
-      mini: false,
-      lint: false,
       pack: false,
       module: {
-        parse: [
+        tasks: [
           {
             test: /\.(js|css)$/,
             plugins: [parse]
@@ -58,11 +56,9 @@ describe('更换关键字', function () {
       cwd: path.resolve(__dirname, './fixtures/keyword'),
       output: path.resolve(__dirname, './output'),
       domain: '//www.example.com',
-      mini: false,
-      lint: false,
       pack: false,
       module: {
-        parse: [
+        tasks: [
           {
             test: /\.(js|css)$/,
             plugins: [{
@@ -107,11 +103,9 @@ describe('不设置域名', function () {
       cwd: path.resolve(__dirname, './fixtures/normal'),
       output: path.resolve(__dirname, './output'),
       domain: '',
-      mini: false,
-      lint: false,
       pack: false,
       module: {
-        parse: [
+        tasks: [
           {
             test: /\.(js|css)$/,
             plugins: [parse]
