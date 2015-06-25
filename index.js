@@ -9,13 +9,14 @@ var pkg = require('./package.json');
  */
 function parse(option, cb) {
   var keyword = option.keyword || 'url';
-  var reg = new RegExp('[\'"\\(](([\\w\\_\\/\\.\\-]*)\\?' + keyword + ')[\'\"\\)]', 'gi');
+  var reg = option.reg || new RegExp('[\'\"\\(]\\s*([\\w\\_\\/\\.\\-]*\\?' + keyword + ')[^\\)\"\']*\\s*[\'\"\\)]', 'gi');
   var contents = this.contents.toString();
   var urlMap = {};
 
   async.eachSeries(contents.match(reg) || [], function (relative, cb) {
+    reg.lastIndex = 0;
     var result = reg.exec(relative);
-    this.getModule(result[2], function (err, module) {
+    this.getModule(result[1].replace(/\?[^\?]+$/, ''), function (err, module) {
       if (err) {
         return cb(err);
       }
