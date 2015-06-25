@@ -174,10 +174,10 @@ describe('更换正则表达式', function () {
   });
 
   it('样式中获取图片和字体的链接', function () {
-    assert.equal(log.modules['foo.css'].hash, 'e17845bd6d1320672a3efe7c3a0d0628');
+    assert.equal(log.modules['foo.css'].hash, '0c7ebcfb3c46721869ebfa808dcd8330');
   });
 
   it('脚本中获取样式的链接', function () {
-    assert.equal(log.modules['foo.js'].hash, 'abb1aa12092a8a84c86f949321437176');
+    assert.equal(log.modules['foo.js'].hash, '837b3315094b70db726a747efbff318a');
   });
 });
