@@ -21,7 +21,7 @@ function parse(option, cb) {
         return cb(err);
       }
 
-      urlMap[result[1]] = module.url || path.relative(path.dirname(this.destAbsPath), module.destAbsPathWithHash);
+      urlMap[result[1]] = module.url || module.destPathWithHash;
       cb();
     }.bind(this));
   }.bind(this), function (err) {
