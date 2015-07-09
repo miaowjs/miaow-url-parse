@@ -9,7 +9,7 @@ var pkg = require('./package.json');
  */
 function parse(option, cb) {
   var keyword = option.keyword || 'url';
-  var reg = option.reg || new RegExp('[\'\"\\(]\\s*([\\w\\_\\/\\.\\-]*\\?' + keyword + ')[^\\)\"\']*\\s*[\'\"\\)]', 'gi');
+  var reg = option.reg || new RegExp('[\'\"\\(]\\s*([\\w\\_\\/\\.\\-]+\\?' + keyword + ')\\s*[\'\"\\)]', 'gi');
   var contents = this.contents.toString();
   var urlMap = {};
 
