@@ -1,1 +1,2 @@
-var fooCSSInline = './foo.css?url';
+var fooCSSURL = './foo.css?url';
+var fooCSS = './foo.css?url&foo=bar';

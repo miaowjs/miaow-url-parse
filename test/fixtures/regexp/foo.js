@@ -1,1 +1,1 @@
-var fooCSSInline = './foo.css';
+var fooCSSURL = './foo.css';
