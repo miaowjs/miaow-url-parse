@@ -26,10 +26,7 @@ function parse(option, cb) {
     }.bind(this));
   }.bind(this), function (err) {
     if (err) {
-      return cb(new mutil.PluginError(pkg.name, err, {
-        fileName: this.file.path,
-        showStack: true
-      }));
+      return cb(err);
     }
 
     contents = contents.replace(reg, function (str, key) {
