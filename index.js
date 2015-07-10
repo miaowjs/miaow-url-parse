@@ -1,8 +1,5 @@
 var async = require('async');
-var mutil = require('miaow-util');
 var path = require('path');
-
-var pkg = require('./package.json');
 
 /**
  * 解析主入口
@@ -13,18 +10,21 @@ function parse(option, cb) {
   var contents = this.contents.toString();
   var urlMap = {};
 
+  var module = this;
   async.eachSeries(contents.match(reg) || [], function (relative, cb) {
     reg.lastIndex = 0;
     var result = reg.exec(relative);
-    this.getModule(result[1].replace(/\?[^\?]+$/, ''), function (err, module) {
+    module.getModule(result[1].replace(/\?[^\?]+$/, ''), function (err, relativeModule) {
       if (err) {
         return cb(err);
       }
 
-      urlMap[result[1]] = module.url || path.relative(path.dirname(this.destAbsPath), module.destAbsPathWithHash);
+      // 添加依赖信息
+      module.dependencies.push(relativeModule.srcPath);
+      urlMap[result[1]] = relativeModule.url || path.relative(path.dirname(module.destAbsPath), relativeModule.destAbsPathWithHash);
       cb();
-    }.bind(this));
-  }.bind(this), function (err) {
+    });
+  }, function (err) {
     if (err) {
       return cb(err);
     }
@@ -33,10 +33,10 @@ function parse(option, cb) {
       return str.replace(key, urlMap[key]);
     });
 
-    this.contents = new Buffer(contents);
+    module.contents = new Buffer(contents);
 
     cb();
-  }.bind(this));
+  });
 }
 
 module.exports = parse;

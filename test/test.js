@@ -44,6 +44,17 @@ describe('正常模式', function () {
   it('脚本中嵌入样式', function () {
     assert.equal(log.modules['foo.js'].hash, '249d397f0421e3c4553c7cc25d5cad6e');
   });
+
+  it('添加依赖信息', function () {
+    var dependencies = log.modules['foo.css'].dependencies;
+
+    assert.equal(dependencies.length, 1);
+    [
+      'foo.png'
+    ].forEach(function (srcPath) {
+        assert.notEqual(dependencies.indexOf(srcPath), -1);
+      });
+  });
 });
 
 describe('更换关键字', function () {
@@ -91,6 +102,17 @@ describe('更换关键字', function () {
   it('脚本中获取样式的链接', function () {
     assert.equal(log.modules['foo.js'].hash, 'ec1d017060aeed3a600f7deff2e68056');
   });
+
+  it('添加依赖信息', function () {
+    var dependencies = log.modules['foo.css'].dependencies;
+
+    assert.equal(dependencies.length, 1);
+    [
+      'foo.png'
+    ].forEach(function (srcPath) {
+        assert.notEqual(dependencies.indexOf(srcPath), -1);
+      });
+  });
 });
 
 describe('不设置域名', function () {
@@ -132,6 +154,17 @@ describe('不设置域名', function () {
 
   it('脚本中获取样式的链接', function () {
     assert.equal(log.modules['foo.js'].hash, 'a6bf43ea20fe907f2bb3f60d00d49660');
+  });
+
+  it('添加依赖信息', function () {
+    var dependencies = log.modules['foo.css'].dependencies;
+
+    assert.equal(dependencies.length, 1);
+    [
+      'foo.png'
+    ].forEach(function (srcPath) {
+        assert.notEqual(dependencies.indexOf(srcPath), -1);
+      });
   });
 });
 
@@ -179,5 +212,21 @@ describe('更换正则表达式', function () {
 
   it('脚本中获取样式的链接', function () {
     assert.equal(log.modules['foo.js'].hash, '56a4cdcb31dd404f5367612c6ec859cd');
+  });
+
+  it('添加依赖信息', function () {
+    var dependencies = log.modules['foo.css'].dependencies;
+
+    assert.equal(dependencies.length, 6);
+    [
+      'iconfont.eot',
+      'iconfont.eot',
+      'iconfont.woff',
+      'iconfont.ttf',
+      'iconfont.svg',
+      'foo.png'
+    ].forEach(function (srcPath) {
+        assert.notEqual(dependencies.indexOf(srcPath), -1);
+      });
   });
 });
