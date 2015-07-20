@@ -42,7 +42,7 @@ describe('正常模式', function () {
   });
 
   it('脚本中嵌入样式', function () {
-    assert.equal(log.modules['foo.js'].hash, '249d397f0421e3c4553c7cc25d5cad6e');
+    assert.equal(log.modules['foo.js'].hash, '4f6d1d5bf5ec89cf7f5f0eaba8c64109');
   });
 
   it('添加依赖信息', function () {
@@ -153,7 +153,7 @@ describe('不设置域名', function () {
   });
 
   it('脚本中获取样式的链接', function () {
-    assert.equal(log.modules['foo.js'].hash, 'a6bf43ea20fe907f2bb3f60d00d49660');
+    assert.equal(log.modules['foo.js'].hash, '37249098004440c2063831fdc88ff1a7');
   });
 
   it('添加依赖信息', function () {

@@ -6,7 +6,7 @@ var path = require('path');
  */
 function parse(option, cb) {
   var keyword = option.keyword || 'url';
-  var reg = option.reg || new RegExp('[\'\"\\(]\\s*([\\w\\_\\/\\.\\-]+\\?' + keyword + ')\\s*[\'\"\\)]', 'gi');
+  var reg = option.reg || new RegExp('[\'\"\\(]\\s*([\\w\\_\\/\\.\\-]+\\#' + keyword + ')\\s*[\'\"\\)]', 'gi');
   var contents = this.contents.toString();
   var urlMap = {};
 
@@ -14,7 +14,7 @@ function parse(option, cb) {
   async.eachSeries(contents.match(reg) || [], function (relative, cb) {
     reg.lastIndex = 0;
     var result = reg.exec(relative);
-    module.getModule(result[1].replace(/\?[^\?]+$/, ''), function (err, relativeModule) {
+    module.getModule(result[1].replace(/\#[^\#]+$/, ''), function (err, relativeModule) {
       if (err) {
         return cb(err);
       }

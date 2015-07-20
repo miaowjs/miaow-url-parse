@@ -1,2 +1,2 @@
-var fooCSSURL = './foo.css?url';
-var fooCSS = './foo.css?url&foo=bar';
+var fooCSSURL = './foo.css#url';
+var fooCSS = './foo.css#url&foo=bar';

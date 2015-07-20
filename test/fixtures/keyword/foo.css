@@ -1,3 +1,3 @@
 .foo {
-  background: url(./foo.png?fullurl);
+  background: url(./foo.png#fullurl);
 }

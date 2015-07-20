@@ -1,1 +1,1 @@
-var fooCSSURL = './foo.css?fullurl';
+var fooCSSURL = './foo.css#fullurl';
