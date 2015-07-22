@@ -21,7 +21,12 @@ function parse(option, cb) {
 
       // 添加依赖信息
       module.dependencies.push(relativeModule.srcPath);
-      urlMap[result[1]] = relativeModule.url || path.relative(path.dirname(module.destAbsPath), relativeModule.destAbsPathWithHash);
+      urlMap[result[1]] =
+        relativeModule.url ||
+        path.relative(path.dirname(module.destAbsPath), relativeModule.destAbsPathWithHash)
+          .split(path.sep)
+          .join('/');
+
       cb();
     });
   }, function (err) {
