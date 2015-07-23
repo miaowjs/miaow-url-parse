@@ -1,5 +1,8 @@
 var async = require('async');
+var mutil = require('miaow-util');
 var path = require('path');
+
+var pkg = require('./package.json');
 
 /**
  * 解析主入口
@@ -44,4 +47,4 @@ function parse(option, cb) {
   });
 }
 
-module.exports = parse;
+module.exports = mutil.plugin(pkg.name, pkg.version, parse);
