@@ -22,13 +22,9 @@ function parse(option, cb) {
         return cb(err);
       }
 
-      // 添加依赖信息
-      module.dependencies.push(relativeModule.srcPath);
       urlMap[result[1]] =
         relativeModule.url ||
-        path.relative(path.dirname(module.destAbsPath), relativeModule.destAbsPathWithHash)
-          .split(path.sep)
-          .join('/');
+        mutil.relative(path.dirname(module.destAbsPath), relativeModule.destAbsPathWithHash);
 
       cb();
     });

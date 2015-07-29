@@ -46,13 +46,13 @@ describe('正常模式', function () {
   });
 
   it('添加依赖信息', function () {
-    var dependencies = log.modules['foo.css'].dependencies;
+    var dependList = log.modules['foo.css'].dependList;
 
-    assert.equal(dependencies.length, 1);
+    assert.equal(dependList.length, 1);
     [
       'foo.png'
     ].forEach(function (srcPath) {
-        assert.notEqual(dependencies.indexOf(srcPath), -1);
+        assert.notEqual(dependList.indexOf(srcPath), -1);
       });
   });
 });
@@ -104,13 +104,13 @@ describe('更换关键字', function () {
   });
 
   it('添加依赖信息', function () {
-    var dependencies = log.modules['foo.css'].dependencies;
+    var dependList = log.modules['foo.css'].dependList;
 
-    assert.equal(dependencies.length, 1);
+    assert.equal(dependList.length, 1);
     [
       'foo.png'
     ].forEach(function (srcPath) {
-        assert.notEqual(dependencies.indexOf(srcPath), -1);
+        assert.notEqual(dependList.indexOf(srcPath), -1);
       });
   });
 });
@@ -157,13 +157,13 @@ describe('不设置域名', function () {
   });
 
   it('添加依赖信息', function () {
-    var dependencies = log.modules['foo.css'].dependencies;
+    var dependList = log.modules['foo.css'].dependList;
 
-    assert.equal(dependencies.length, 1);
+    assert.equal(dependList.length, 1);
     [
       'foo.png'
     ].forEach(function (srcPath) {
-        assert.notEqual(dependencies.indexOf(srcPath), -1);
+        assert.notEqual(dependList.indexOf(srcPath), -1);
       });
   });
 });
@@ -215,18 +215,17 @@ describe('更换正则表达式', function () {
   });
 
   it('添加依赖信息', function () {
-    var dependencies = log.modules['foo.css'].dependencies;
+    var dependList = log.modules['foo.css'].dependList;
 
-    assert.equal(dependencies.length, 6);
+    assert.equal(dependList.length, 5);
     [
-      'iconfont.eot',
       'iconfont.eot',
       'iconfont.woff',
       'iconfont.ttf',
       'iconfont.svg',
       'foo.png'
     ].forEach(function (srcPath) {
-        assert.notEqual(dependencies.indexOf(srcPath), -1);
+        assert.notEqual(dependList.indexOf(srcPath), -1);
       });
   });
 });
