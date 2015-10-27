@@ -2,6 +2,7 @@
 
 > Miaow的URL补全工具
 
+## 效果示例
 
 ```css
 .foo {
@@ -14,29 +15,14 @@
 }
 ```
 
-## 使用说明
+### 参数说明
 
-### 安装
+#### keyword
+Type:`String` Default:`'url'`
 
-```
-npm install miaow-url-parse --save-dev
-```
+用于匹配哪些链接需要做链接替换操作
 
-### 在项目的 miaow.config.js 中添加模块的 tasks 设置
+#### regexp
+Type:`RegExp` Default:`undefined`
 
-```javascript
-//miaow.config.js
-module: {
-  tasks: [
-    {
-      test: /\.(js|css)$/,
-      plugins: ['miaow-url-parse']
-    }
-  ]
-}
-```
-
-### 选项
-
-* keyword 默认是`url`, 用于匹配哪些链接需要做链接替换操作
-* reg 默认是`undefined`, 自定义匹配相对路径的正则表达式, 要保证匹配的第一个组应该是相对路径
+自定义匹配相对路径的正则表达式, 要保证匹配的第一个组应该是相对路径
