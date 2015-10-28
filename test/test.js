@@ -42,17 +42,6 @@ describe('正常模式', function() {
   it('脚本中嵌入样式', function() {
     assert.equal(find(log.modules, {src: 'foo.js'}).destHash, '035b543f354b25d615295ca89ea8c5f7');
   });
-
-  it('添加依赖信息', function() {
-    var fileDependencies = find(log.modules, {src: 'foo.css'}).fileDependencies;
-
-    assert.equal(fileDependencies.length, 1);
-    ['foo.png'].forEach(
-      function(srcPath) {
-        assert.notEqual(fileDependencies.indexOf(srcPath), -1);
-      }
-    );
-  });
 });
 
 describe('更换关键字', function() {
@@ -78,17 +67,6 @@ describe('更换关键字', function() {
   it('脚本中获取样式的链接', function() {
     assert.equal(find(log.modules, {src: 'foo.js'}).destHash, 'b29f885b71ec2053aeaf52f1e2f6ece4');
   });
-
-  it('添加依赖信息', function() {
-    var fileDependencies = find(log.modules, {src: 'foo.css'}).fileDependencies;
-
-    assert.equal(fileDependencies.length, 1);
-    ['foo.png'].forEach(
-      function(srcPath) {
-        assert.notEqual(fileDependencies.indexOf(srcPath), -1);
-      }
-    );
-  });
 });
 
 describe('更换正则表达式', function() {
@@ -113,16 +91,5 @@ describe('更换正则表达式', function() {
 
   it('脚本中获取样式的链接', function() {
     assert.equal(find(log.modules, {src: 'foo.js'}).destHash, 'd40fc589eaa82ddb58997ec7e6e2c78b');
-  });
-
-  it('添加依赖信息', function() {
-    var fileDependencies = find(log.modules, {src: 'foo.css'}).fileDependencies;
-
-    assert.equal(fileDependencies.length, 5);
-    ['iconfont.eot', 'iconfont.woff', 'iconfont.ttf', 'iconfont.svg', 'foo.png'].forEach(
-      function(srcPath) {
-        assert.notEqual(fileDependencies.indexOf(srcPath), -1);
-      }
-    );
   });
 });

@@ -19,8 +19,6 @@ module.exports = function(options, callback) {
           return callback(err);
         }
 
-        context.addFileDependency(relativeModule.src);
-
         urlMap[result[1]] = relativeModule.url;
 
         callback();
