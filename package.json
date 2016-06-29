@@ -13,7 +13,7 @@
     "url"
   ],
   "dependencies": {
-    "async": "~1.4.2"
+    "async": "1.4.2"
   },
   "devDependencies": {
     "miaow": "^5.0.0",
